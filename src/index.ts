@@ -2,9 +2,10 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import dbConnection from "./config/database";
-import categoryRoute from "./routes/categoryRoute";
 import ApiError from "./utils/apiError";
 import errorMiddleware from "./middlewares/errorMiddleware";
+import categoryRoute from "./routes/categoryRoute";
+import subCategoryRoute from "./routes/subCategoryRoute";
 
 //Config
 dotenv.config();
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 //Routes
 app.use("/api/categories", categoryRoute);
+app.use("/api/sub-categories", subCategoryRoute);
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
   next(new ApiError(`Can't find ${req.originalUrl} on this server!`, 404));
 });

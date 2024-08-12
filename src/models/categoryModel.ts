@@ -1,11 +1,13 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Document, Schema, Model } from "mongoose";
 
 //Interface
 interface Icategory extends Document {
   name: string;
+  slug: string;
+  image: string;
 }
 //Schema
-const categorySchema = new mongoose.Schema(
+const categorySchema = new Schema(
   {
     name: {
       type: String,
