@@ -1,7 +1,5 @@
-import { NextFunction, Request, Response } from "express";
 import CategoryModel from "../models/categoryModel";
-import slugify from "slugify";
-import asyncHandler from "express-async-handler";
+
 import {
   createOne,
   deleteOne,
