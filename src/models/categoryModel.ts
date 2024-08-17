@@ -2,19 +2,19 @@ import mongoose, { Document, Schema, Model } from "mongoose";
 
 //Interface
 interface Icategory extends Document {
-  name: string;
+  title: string;
   slug: string;
   image: string;
 }
 //Schema
 const categorySchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
-      required: [true, "category name is required"],
-      unique: [true, "category name must be unique"],
-      minlength: [3, "category name must be at least 3 characters"],
-      maxlength: [32, "category name must be at most 32 characters"],
+      required: [true, "category title is required"],
+      unique: [true, "category title must be unique"],
+      minlength: [3, "category title must be at least 3 characters"],
+      maxlength: [32, "category title must be at most 32 characters"],
     },
     slug: {
       type: String,

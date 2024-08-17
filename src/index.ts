@@ -4,8 +4,11 @@ import morgan from "morgan";
 import dbConnection from "./config/database";
 import ApiError from "./utils/apiError";
 import errorMiddleware from "./middlewares/errorMiddleware";
+//routes import
 import categoryRoute from "./routes/categoryRoute";
 import subCategoryRoute from "./routes/subCategoryRoute";
+import brandRoute from "./routes/brandRoute";
+import productRoute from "./routes/productRoute";
 
 //Config
 dotenv.config();
@@ -23,6 +26,9 @@ app.use(express.json());
 //Routes
 app.use("/api/categories", categoryRoute);
 app.use("/api/sub-categories", subCategoryRoute);
+app.use("/api/brands", brandRoute);
+app.use("/api/products", productRoute);
+
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
   next(new ApiError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
